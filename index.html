@@ -8,9 +8,21 @@
         <link href="css/style.css" rel="stylesheet">
     </head>
     <body>
-        <h3>Card Match Game</h3>
+        <h2>Card Match Game</h2>
+        <div>
+            <p>Match Count: <span id="counter"></span></p>
+        </div>
         <div class="container" id="container">
             
+        </div>
+        <div id="completed" class="hide">
+            <h2>Congratulations you have matched all the cards!</h2>
+            <div>
+                <img src="images/congratulations-2271.gif" alt="congrat-smile-face" class="completed__congrat_img">
+            </div>
+            <div>
+                <button type="button" class="completed__replay" id="replay">Play Again</button>
+            </div>
         </div>
     
         <script src="js/app.js"></script>
