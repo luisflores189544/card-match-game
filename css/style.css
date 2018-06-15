@@ -11,6 +11,22 @@ body {
     
 }
 
+#completed {
+    width: 100%;
+    margin: 0 auto;
+    top:20%;
+    position: absolute;
+    
+
+    /* top: 50%; */
+    /* left: 50%; */
+    /* z-index: 15; */
+    /* position: absolute; */
+    
+    /* height: 100%; */
+
+}
+
 .card {
     width: 125px;
     height: 125px;
@@ -21,7 +37,7 @@ body {
 }
 
 .card__face_up {
-    background-color: rgb(34, 173, 29);
+    background-color: rgb(230, 165, 62);
     width: 100%;
     height: 100%;
     text-align: center;
@@ -36,11 +52,35 @@ body {
     background-color: rgb(35, 102, 211);
 }
 
+.card__invalid_match {
+    background-color: rgb(155, 27, 18);
+}
+.card__valid_match {
+    background-color: rgb(44, 189, 51);
+}
+
+.completed__replay {
+    padding: 1em;
+    background-color: rgb(233, 236, 28);
+    color: gray;
+    border-radius: 1em;
+}
+
 svg {
     pointer-events: none;
     visibility: hidden;
 }
 
-.match {
+.deactiveCard {
     pointer-events: none;
+}
+
+.hide {
+    display: none;
+}
+
+@media screen and (max-width:480px) {
+    .completed__congrat_img {
+        width: 100%;
+    }
 }
