@@ -36,13 +36,13 @@ function createCards() {
     } else {
         iconList = cardObject.iconSetTwo;
     }
-    for(let i = 0; i < iconList.length; i++) {
+    // new icon list is 2d
+    let newIconList = [];
+    newIconList = randomSortImg(iconList.concat(iconList));
+    for(let i = 0; i < newIconList.length; i++) {
         setTimeout(() =>{
-            addHTML(iconList[i]);
+            addHTML(newIconList[i][1]);
         },10);
-        setTimeout(() =>{
-            addHTML(iconList[i]);
-        },35)
         
     }
 }
@@ -50,6 +50,18 @@ function createCards() {
 function addHTML(tag) {
     const container = document.getElementById('container');
     container.insertAdjacentHTML('beforeend', `<div class="card" id="${genarateId()}"><div class="card__face_down">${tag}</div></div>`);
+}
+
+// randomize cards list
+function randomSortImg(array) {
+    let newList = [];
+    array.forEach((element) => {
+        newList.push([Math.random(), element]);
+    })
+    newList = newList.sort((a, b) => {
+        return a[0] - b[0];
+    });
+    return newList;
 
 }
 // call createCards function on startup
@@ -80,6 +92,13 @@ function matchCounter() {
         finish.classList.remove('hide');
     }
     updateMatchCount();
+    tryCounter();
+}
+
+let cardTryCount = 0;
+function tryCounter() {
+    cardTryCount++;
+    updateTryCount();
 }
 // check is both cards selected are a match
 let compareList = [];
@@ -99,6 +118,7 @@ function isCardMatch(node) {
             delayTime = 301;
             
         } else {
+            tryCounter();
             setTimeout(() => {
                 invalidMatch(compareList[0]);
                 invalidMatch(compareList[1]);
@@ -129,12 +149,18 @@ function validMatch(node) {
 
 function flipCardDown(node) {
     node.className = 'card__face_down';
-    node.firstElementChild.style.visibility = 'hidden';
+    setTimeout(() => {
+        node.firstElementChild.style.visibility = 'hidden';
+    }, 250);
+    
 }
 
 function flipCardUp(node) {
     node.className = 'card__face_up';
-    node.firstElementChild.style.visibility = 'visible';
+    setTimeout(() => {
+        node.firstElementChild.style.visibility = 'visible';
+    }, 300);
+    
 }
 
 function deactivateCard(node) {
@@ -146,8 +172,12 @@ function activateCard(node) {
 }
 
 function updateMatchCount() {
-    document.getElementById('counter').innerText = cardMatchCount;
+    document.getElementById('match-counter').innerText = cardMatchCount;
 
+}
+
+function updateTryCount() {
+    document.getElementById('attempt-counter').innerText = cardTryCount;
 }
 
 const containerDiv = document.getElementById('container');
