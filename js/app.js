@@ -88,8 +88,11 @@ function matchCounter() {
     if (cardMatchCount === 8) {
         const finish = document.getElementById('completed');
         const game = document.getElementById('container');
-        game.classList.add('hide');
+        setTimeout(() => {
+            game.classList.add('hide');
         finish.classList.remove('hide');
+        }, 500);
+        
     }
     updateMatchCount();
     tryCounter();
@@ -186,8 +189,13 @@ containerDiv.addEventListener('click', cardClick);
 
 
 // refresh game
-const btnReplay = document.getElementById('replay');
+const btnReplay = document.getElementById('b-replay');
+const linkReplay = document.getElementById('a-replay');
 
 btnReplay.addEventListener('click', () => {
     location.reload();
-})
+});
+
+linkReplay.addEventListener('click', () => {
+    location.reload();
+});
