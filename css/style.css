@@ -101,6 +101,7 @@ body {
 svg {
     pointer-events: none;
     visibility: hidden;
+    padding-top: 25%;
 }
 
 .deactiveCard {
